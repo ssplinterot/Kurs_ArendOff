@@ -1,0 +1,110 @@
+﻿<Window x:Class="Kurs_ArendOff.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ArendLand"
+        Height="650" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#ECF0F1">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="5,2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="5"
+                            BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+
+                        <!-- Триггеры внутри шаблона -->
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#61443D"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#4E352F"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <!-- Боковое меню -->
+        <Border x:Name="SideMenu"
+                Width="60"
+                Background="#96695E"
+                HorizontalAlignment="Left"
+                MouseEnter="SideMenu_MouseEnter"
+                MouseLeave="SideMenu_MouseLeave">
+
+            <StackPanel Margin="10,13,10,0">
+
+                <!-- Кнопка Диаграммы -->
+                <Image Source="/Icons/logo1.png" Width="94" Height="80" Margin="-20,0,0,0"/>
+
+                <!-- Кнопка Диаграммы -->
+                <Button Height="40" Background="Transparent" Foreground="White" BorderThickness="0">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Image Source="Icons/diagram.png" Width="20" Height="20" Margin="10,0,0,0"/>
+                        <TextBlock x:Name="txtDiagram" Text="Диаграммы"
+                                   VerticalAlignment="Center"
+                                   Margin="8,0,0,0"
+                                   Opacity="0" FontFamily="Circe Bold" FontSize="16"/>
+                    </StackPanel>
+                </Button>
+
+                <!-- Кнопка Места -->
+                <Button Height="40" Background="Transparent" Foreground="White" BorderThickness="0" Click="PlaceButton_Click">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Image Source="Icons/arendaInform.png" Width="20" Height="20" Margin="10,0,0,0"/>
+                        <TextBlock x:Name="txtPlaces" Text="Места"
+                                   VerticalAlignment="Center"
+                                   Margin="8,0,0,0"
+                                   Opacity="0" FontFamily="Circe Bold" FontSize="16"/>
+                    </StackPanel>
+                </Button>
+
+                <!-- Кнопка Дневник -->
+                <Button Height="40" Background="Transparent" Foreground="White" BorderThickness="0">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Image Source="Icons/payArend.png" Width="20" Height="20" Margin="9,0,0,0"/>
+                        <TextBlock x:Name="txtDiary" Text="Дневник"
+                                   VerticalAlignment="Center"
+                                   Margin="8,0,0,0"
+                                   Opacity="0" FontFamily="Circe Bold" FontSize="16"/>
+                    </StackPanel>
+                </Button>
+
+                <!-- Кнопка Настройки -->
+                <Button Height="40" Background="Transparent" Foreground="White" BorderThickness="0">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Image Source="Icons/Settings.png" Width="20" Height="20" Margin="10,0,0,0"/>
+                        <TextBlock x:Name="txtSettings" Text="Настройки"
+                                   VerticalAlignment="Center"
+                                   Margin="8,0,0,0"
+                                   Opacity="0" FontFamily="Circe Bold" FontSize="16"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <!-- Основное содержимое -->
+        <Border x:Name="MainContent"
+                Background="#ECF0F1"
+                Margin="60,0,0,0">
+            <Frame x:Name="MapWindow" NavigationUIVisibility="Hidden"/>
+        </Border>
+    </Grid>
+</Window>
