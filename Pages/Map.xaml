@@ -25,7 +25,7 @@
                 </Rectangle>
             </Canvas>
             <!--Выплывающее окно-->
-                <Border x:Name="popUpMenu"
+            <Border x:Name="popUpMenu"
                     Background="White"
                     BorderBrush="#96695e"
                     BorderThickness="2"
@@ -51,7 +51,7 @@
                     <TextBlock x:Name="popUpDescription"
                                Text="Описание"
                                Margin="0,5,0,0"
-                               TextWrapping="Wrap"/>       
+                               TextWrapping="Wrap"/>
                 </StackPanel>
             </Border>
         </Grid>

@@ -35,8 +35,8 @@ namespace Kurs_ArendOff
             popUpStatus.Text = "Статус: занято";
 
             popUpMenu.Visibility = Visibility.Visible;
-            Canvas.SetLeft(popUpMenu, 1105+20);
-            Canvas.SetTop(popUpMenu, 52+20);
+            Canvas.SetLeft(popUpMenu, 1105 + 20);
+            Canvas.SetTop(popUpMenu, 52 + 20);
         }
 
         private void Rect_MouseLeave(object sender, MouseEventArgs e)
