@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,16 +10,20 @@ namespace Kurs_ArendOff.Models
 {
     public class User
     {
-        [Key]
         public int Id { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+    }
+    internal class ApplicationContext : DbContext
+    {
+        // Конструктор, указывающий имя строки подключения из App.config.
+        public ApplicationContext() : base("ArendConnection")
+        {
+            Database.SetInitializer(new CreateDatabaseIfNotExists<ApplicationContext>());
+        }
 
-        [Required] 
-        public string Login { get; set; } = string.Empty;
-
-        [Required]
-        public string PasswordHash { get; set; } = string.Empty; // Храним хэш пароля
-
-        public string FullName { get; set; } = "Пользователь";
-        public string Role { get; set; } = "User"; // User / Admin
+        // DbSets, которые станут таблицами в базе ArendDB
+        public DbSet<User> Users { get; set; }
+       
     }
 }

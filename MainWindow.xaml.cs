@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Media.Animation;
 using System.Windows.Controls;
 using Kurs_ArendOff;
-using LiveCharts.Maps;
+
 
 namespace Kurs_ArendOff
 {
@@ -78,6 +78,12 @@ namespace Kurs_ArendOff
         private void PlaceButton_Click(object sender, RoutedEventArgs e)
         {
             MapWindow.Navigate(new Kurs_ArendOff.Page1());
+        }
+
+        private void DiaryButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            MapWindow.Navigate(new Kurs_ArendOff.Pages.DiaryPage());
         }
     }
 }
