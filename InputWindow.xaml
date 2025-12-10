@@ -1,0 +1,59 @@
+﻿<Window x:Class="Kurs_ArendOff.InputWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kurs_ArendOff"
+        mc:Ignorable="d"
+        Title="Ввод данных договора" Height="500" Width="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#ECF0F1"
+        ResizeMode="NoResize">
+    <Border Padding="20" Margin="0,0,0,-102">
+        <StackPanel Margin="0,0,0,-20">
+        <TextBlock Text="Новый договор аренды" 
+                       FontSize="20" FontWeight="Bold" 
+                       Margin="0,0,0,15" Foreground="#34495E"/>
+
+        <Label Content="Название организации:" FontWeight="SemiBold"/>
+        <TextBox x:Name="TxtOrgName" Margin="0,0,0,10" Padding="5"/>
+
+        <Label Content="ИНН/УНП:" FontWeight="SemiBold"/>
+        <TextBox x:Name="TxtINN" Margin="0,0,0,10" Padding="5"/>
+
+        <Label Content="Номер договора:" FontWeight="SemiBold"/>
+        <TextBox x:Name="TxtContractNumber" Margin="0,0,0,10" Padding="5"/>
+
+        <Grid Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Margin="0,0,5,0">
+                <Label Content="Начало аренды:" FontWeight="SemiBold"/>
+                <DatePicker x:Name="DpStartDate" Padding="5"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Margin="5,0,0,0">
+                <Label Content="Конец аренды:" FontWeight="SemiBold"/>
+                <DatePicker x:Name="DpEndDate" Padding="5"/>
+            </StackPanel>
+        </Grid>
+
+        <Label Content="Ежемесячная сумма (BYN):" FontWeight="SemiBold"/>
+        <TextBox x:Name="TxtRentalAmount" Margin="0,0,0,10" Padding="5"/>
+
+        <CheckBox x:Name="ChkIsPaid" Content="Оплачено за текущий период" Margin="0,5,0,20" 
+                      FontWeight="SemiBold" Foreground="#34495E"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Отмена" Width="80" Height="30" Margin="0,0,10,0" Click="CancelButton_Click"/>
+            <Button x:Name="SaveButton" Content="Сохранить" Width="100" Height="30" 
+                        Background="#96695E" Foreground="White" BorderBrush="#96695E"
+                        Click="SaveButton_Click"/>
+        </StackPanel>
+
+        </StackPanel>
+    </Border>
+</Window>

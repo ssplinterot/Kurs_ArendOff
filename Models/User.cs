@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Kurs_ArendOff.Models;
 
 namespace Kurs_ArendOff.Models
 {
@@ -16,14 +17,12 @@ namespace Kurs_ArendOff.Models
     }
     internal class ApplicationContext : DbContext
     {
-        // Конструктор, указывающий имя строки подключения из App.config.
         public ApplicationContext() : base("ArendConnection")
         {
-            Database.SetInitializer(new CreateDatabaseIfNotExists<ApplicationContext>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationContext>());
         }
-
-        // DbSets, которые станут таблицами в базе ArendDB
-        public DbSet<User> Users { get; set; }
-       
+        public DbSet<User> Users { get; set; }// DbSets, которые станут таблицами в базе ArendDB
+        public DbSet<OrganizationData> OrganizationDatas { get; set; }
+        public DbSet<Place> Places { get; set; }
     }
 }

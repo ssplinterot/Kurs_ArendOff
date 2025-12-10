@@ -23,8 +23,31 @@
         <TextBox x:Name="TxtUsername" Padding="8" Margin="0,0,0,10"/>
 
         <Label Content="Пароль: " FontFamily="Circe Bold"/>
-        <PasswordBox x:Name="PbPassword" Padding="8" Margin="0,0,0,20"/>
+        <Grid Margin="0,0,0,20">
+            <PasswordBox x:Name="PbPassword" 
+                         Padding="8" 
+                         VerticalContentAlignment="Center"
+                         PasswordChanged="PbPassword_PasswordChanged"
+                         Visibility="Visible"/>
 
+            <TextBox x:Name="TxtPasswordVisible" 
+                     Padding="8" 
+                     VerticalContentAlignment="Center"
+                     Visibility="Hidden"/>
+
+            <Button x:Name="TogglePasswordVisibility"
+                    HorizontalAlignment="Right"
+                    Width="30" Height="30"
+                    Margin="0,0,5,0"
+                    VerticalAlignment="Center"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Click="TogglePasswordVisibility_Click">
+
+                <Image x:Name="EyeIcon" Source="/Icons/closed-eye.png" Width="20" Height="20"/>
+
+            </Button>
+        </Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 
             <Button Content="Войти" 
@@ -45,6 +68,7 @@
                     Foreground="White"
                     Padding="20,10"
                     Width="150"/>
+
         </StackPanel>
 
     </StackPanel>

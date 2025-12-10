@@ -16,9 +16,11 @@ namespace Kurs_ArendOff
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+
             // Создаем и показываем окно авторизации
             AuthWindow authWindow = new AuthWindow();
             authWindow.Show();
+
         }
     }
 }

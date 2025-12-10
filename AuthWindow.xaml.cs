@@ -21,7 +21,45 @@ namespace Kurs_ArendOff
         {
             InitializeComponent();
         }
+        // Флаг, который показывает, виден ли пароль
+        private bool _isPasswordVisible = false;
+        private void PbPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (!_isPasswordVisible)
+            {
+            }
+        }
 
+        private void TogglePasswordVisibility_Click(object sender, RoutedEventArgs e)
+        {
+            if (_isPasswordVisible)
+            {
+                // Скрываем пароль (переключаемся на PasswordBox)
+
+                //Скрываем TextBox и показываем PasswordBox
+                TxtPasswordVisible.Visibility = Visibility.Hidden;
+                PbPassword.Visibility = Visibility.Visible;
+                PbPassword.Focus();
+                //Меняем иконку
+                EyeIcon.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("/Icons/closed-eye.png", UriKind.Relative));
+            }
+            else
+            {
+                // Показываем пароль (переключаемся на TextBox)
+
+                //Копируем пароль из PasswordBox в TextBox
+                TxtPasswordVisible.Text = PbPassword.Password;
+
+                //Скрываем PasswordBox и показываем TextBox
+                PbPassword.Visibility = Visibility.Hidden;
+                TxtPasswordVisible.Visibility = Visibility.Visible;
+                TxtPasswordVisible.Focus();
+                //Меняем иконку
+                EyeIcon.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri("/Icons/opened-eye.png", UriKind.Relative));
+            }
+
+            _isPasswordVisible = !_isPasswordVisible;
+        }
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
             string username = TxtUsername.Text;
@@ -63,7 +101,17 @@ namespace Kurs_ArendOff
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             string username = TxtUsername.Text;
-            string password = PbPassword.Password;
+            string password;
+            if (PbPassword.IsVisible)
+            {
+                // Если видим PasswordBox, берем пароль оттуда
+                password = PbPassword.Password;
+            }
+            else
+            {
+                // Если видим TextBox, берем пароль оттуда
+                password = TxtPasswordVisible.Text;
+            }
 
             try
             {
@@ -91,9 +139,11 @@ namespace Kurs_ArendOff
             }
             catch (System.Exception ex)
             {
-                MessageBox.Show($"Ошибка входа: {ex.Message}", "Ошибка БД", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Ошибка входа: {ex.Message}", "Ошибка в Базе Данных");
             }
         
         }
+
+
     }
 }

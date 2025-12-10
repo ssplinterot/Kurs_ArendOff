@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+
       Title="Map">
 
     <Grid>
@@ -15,13 +16,27 @@
             <Canvas >
                 <!--Золотое яблоко-->
                 <Rectangle x:Name="ЗЯ"
-                    Width="400" Height="120"
-                    Canvas.Left="605" Canvas.Top="52"
+                    Width="292" Height="87"
+                    Canvas.Left="433" Canvas.Top="39"
                      Fill="Transparent"
+                     Tag="Золотое Яблко"  
                        MouseEnter="Rect_MouseEnter"
                        MouseLeave="Rect_MouseLeave"
                        MouseMove="Rect_MouseMove"
-                     Cursor="Hand">
+                       MouseLeftButtonUp="Place_MouseClick"
+                     Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Center">
+                </Rectangle>
+
+                <Rectangle x:Name="Булочки"
+                    Width="62" Height="84"
+                    Canvas.Left="594" Canvas.Top="177"
+                    Fill="Transparent"
+                    Tag="Булочки" 
+                    MouseEnter="Rect_MouseEnter"
+                    MouseLeave="Rect_MouseLeave"
+                    MouseMove="Rect_MouseMove"
+                    MouseLeftButtonUp="Place_MouseClick" 
+                    Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center">
                 </Rectangle>
             </Canvas>
             <!--Выплывающее окно-->
