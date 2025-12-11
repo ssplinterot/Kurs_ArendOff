@@ -11,36 +11,34 @@
     <Grid>
         <Border Background="White" CornerRadius="10" Margin="20"/>
         <!-- Изображение карты -->
-        <Grid>
-            <Image Source="/MapImage/1.png" Stretch="Uniform"/>
-            <Canvas >
-                <!--Золотое яблоко-->
-                <Rectangle x:Name="ЗЯ"
-                    Width="292" Height="87"
-                    Canvas.Left="433" Canvas.Top="39"
+        <Viewbox Stretch="Uniform" Margin="20">
+            <Grid>
+                <Image Source="/MapImage/1.png" Stretch="Uniform"/>
+                <Canvas>
+                    <!--Золотое яблоко-->
+                    <Path x:Name="ЗЯ"
+                     Data="M433,39 L725,39 L725,126 L433,126 Z"
                      Fill="Transparent"
-                     Tag="Золотое Яблко"  
+                     Tag="Золотое Яблоко"  
                        MouseEnter="Rect_MouseEnter"
                        MouseLeave="Rect_MouseLeave"
                        MouseMove="Rect_MouseMove"
                        MouseLeftButtonUp="Place_MouseClick"
-                     Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Center">
-                </Rectangle>
+                     Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="432.965" Stretch="Fill" Width="292" Canvas.Top="39.326">
+                    </Path>
 
-                <Rectangle x:Name="Булочки"
-                    Width="62" Height="84"
-                    Canvas.Left="594" Canvas.Top="177"
+                    <Path x:Name="Булочки"
+                    Data="M433,39 L725,39 L725,126 L433,126 Z"
                     Fill="Transparent"
                     Tag="Булочки" 
                     MouseEnter="Rect_MouseEnter"
                     MouseLeave="Rect_MouseLeave"
                     MouseMove="Rect_MouseMove"
                     MouseLeftButtonUp="Place_MouseClick" 
-                    Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Center">
-                </Rectangle>
-            </Canvas>
-            <!--Выплывающее окно-->
-            <Border x:Name="popUpMenu"
+                    Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top" Height="86" Stretch="Fill" Canvas.Left="594.794" Canvas.Top="175.488" Width="60">
+                    </Path>
+                    <!--Выплывающее окно-->
+                    <Border x:Name="popUpMenu"
                     Background="White"
                     BorderBrush="#96695e"
                     BorderThickness="2"
@@ -51,24 +49,29 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     Panel.ZIndex="1000">
-                <StackPanel Margin="0,5,50,0">
-                    <TextBlock x:Name="popUpName"
+                        <StackPanel Margin="0,5,50,0">
+                            <TextBlock x:Name="popUpName"
                                Text="Название магазина"/>
-                    <TextBlock x:Name="popUpArea"
+                            <TextBlock x:Name="popUpArea"
                                Text="Площадь: 0 м²"
                                Margin="0,5,0,0"/>
-                    <TextBlock x:Name="popUpRent"
+                            <TextBlock x:Name="popUpRent"
                                Text="Аренда: 0 тыс.руб."
                                Margin="0,2,0,0"/>
-                    <TextBlock x:Name="popUpStatus"
+                            <TextBlock x:Name="popUpStatus"
                                Text="Статус: свободно"
                                Margin="0,2,0,0"/>
-                    <TextBlock x:Name="popUpDescription"
+                            <TextBlock x:Name="popUpDescription"
                                Text="Описание"
                                Margin="0,5,0,0"
                                TextWrapping="Wrap"/>
-                </StackPanel>
-            </Border>
-        </Grid>
+                        </StackPanel>
+                    </Border>
+                </Canvas>
+            </Grid>
+        </Viewbox>
+
+
     </Grid>
+
 </Page>
