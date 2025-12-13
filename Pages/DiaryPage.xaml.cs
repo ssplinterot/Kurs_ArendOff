@@ -28,19 +28,33 @@ namespace Kurs_ArendOff.Pages
         {
             try
             {
-                // Используем Entity Framework для подключения к БД
                 using (var db = new ApplicationContext())
                 {
-                    // 1. Запрос: Получаем все записи из таблицы OrganizationDatas
-                    var contracts = db.OrganizationDatas.ToList();
 
-                    // 2. Привязка данных к таблице ContractsDataGrid
-                    // DataContext - это источник данных для элементов на странице.
-                    ContractsDataGrid.ItemsSource = contracts;
+                    var organizationData = db.OrganizationDatas
+                        .Select(o => new // Проекция на анонимный тип
+                        {
+                            // ID
+                            ID = o.Id,
 
-                    // Обучение: ItemsSource — это ключевое свойство для WPF-элементов
-                    // (например, ListBox, DataGrid). Оно указывает, какой набор данных 
-                    // нужно отобразить.
+                            // Названия организации и договора
+                            Название_Организации = o.OrganizationName,
+                            Номер_Договора = o.ContractNumber,
+                            ИНН = o.INN,
+
+                            // Даты
+                            Начало_Аренды = o.ContractStartDate,
+                            Окончание_Аренды = o.ContractEndDate,
+
+                            // Финансы и статус
+                            Сумма_Аренды = o.RentalAmount,
+                            Оплачено = o.IsPaid,
+
+                            // Помещение
+                            Идентификатор_Места = o.PlaceIdentifier
+                        })
+                        .ToList();
+                    ContractsDataGrid.ItemsSource = organizationData;
                 }
             }
             catch (System.Exception ex)

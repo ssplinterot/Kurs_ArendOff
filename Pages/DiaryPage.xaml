@@ -5,7 +5,52 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
       Title="DiaryPage"
-      Loaded="Page_Loaded">
+      Loaded="Page_Loaded"
+      Background="White">
+
+    <Page.Resources>
+        <Style TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Background" Value="#96695E"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="MinHeight" Value="35"/>
+            <Setter Property="FontFamily" Value="Circe"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10,8" />
+            <Setter Property="BorderThickness" Value="0,0,1,1"/>
+            <Setter Property="BorderBrush" Value="#61443D"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="{x:Type DataGridRow}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="MinHeight" Value="35"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+            <Style.Triggers>
+                <Trigger Property="AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="#F9F9F9"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#EFEFEF"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#E0E0E0"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type DataGridCell}">
+            <Setter Property="Padding" Value="10, 0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        </Style>
+
+    </Page.Resources>
+
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -15,17 +60,45 @@
         <TextBlock Text="Дневник договоров аренды"
                    FontSize="24"
                    FontWeight="Bold"
+                   FontFamily="Circe Bold"
                    Margin="0,0,0,15"/>
 
         <DataGrid x:Name="ContractsDataGrid"
                   Grid.Row="1"
-                  AutoGenerateColumns="True"  IsReadOnly="True"          HeadersVisibility="Column"
-                  GridLinesVisibility="Horizontal"
-                  HorizontalGridLinesBrush="#CCCCCC"
-                  RowBackground="White"
-                  AlternatingRowBackground="#F5F5F5"
-                  BorderBrush="#DDDDDD"
-                  BorderThickness="1"/>
+          AutoGenerateColumns="False"  IsReadOnly="True"
+          HeadersVisibility="Column"
+          
+          ColumnHeaderHeight="35"
+          RowHeight="35" 
+          RowHeaderWidth="0"
+          
+          GridLinesVisibility="Horizontal"
+          HorizontalGridLinesBrush="#DDDDDD"
+          
+          VerticalAlignment="Stretch"
+          HorizontalAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding ID}" Width="Auto" CanUserResize="False"
+                                    FontFamily="Circe"/>
+                <DataGridTextColumn Header="Название Организации" Binding="{Binding Название_Организации}" Width="3*" FontFamily="Circe"/>
+                <DataGridTextColumn Header="№ Договора" Binding="{Binding Номер_Договора}" Width="2*" FontFamily="Circe"/>
+                <DataGridTextColumn Header="ИНН" Binding="{Binding ИНН}" Width="2*" FontFamily="Circe"/>
 
+                <DataGridTextColumn Header="Начало Аренды" 
+                        Binding="{Binding Начало_Аренды, StringFormat=\{0:dd.MM.yyyy\}}" 
+                        Width="1.5*" FontFamily="Circe"/>
+                <DataGridTextColumn Header="Окончание Аренды" 
+                        Binding="{Binding Окончание_Аренды, StringFormat=\{0:dd.MM.yyyy\}}" 
+                        Width="1.5*" FontFamily="Circe"/>
+
+                <DataGridTextColumn Header="Сумма (тыс. BYN)" 
+                        Binding="{Binding Сумма_Аренды, StringFormat=\{0:N2\}}" 
+                        Width="2*" FontFamily="Circe"/>
+
+                <DataGridCheckBoxColumn Header="Оплачено" Binding="{Binding Оплачено, Mode=OneWay}" Width="Auto" CanUserResize="False"/>
+
+                <DataGridTextColumn Header="Место ID" Binding="{Binding Идентификатор_Места}" Width="1.5*" FontFamily="Circe"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>
