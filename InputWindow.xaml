@@ -5,23 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kurs_ArendOff"
         mc:Ignorable="d"
-        Title="Ввод данных договора" Height="500" Width="400"
+        Title="Ввод данных договора" Height="500" Width="400" FontFamily="Ci"
         WindowStartupLocation="CenterScreen"
         Background="#ECF0F1"
         ResizeMode="NoResize">
-    <Border Padding="20" Margin="0,0,0,-102">
+    <Border Padding="20" Margin="0,0,0,-102" CornerRadius="20">
         <StackPanel Margin="0,0,0,-20">
         <TextBlock Text="Новый договор аренды" 
-                       FontSize="20" FontWeight="Bold" 
-                       Margin="0,0,0,15" Foreground="#34495E"/>
+                       FontSize="20" FontWeight="UltraBold" 
+                       Margin="0,0,0,15" Foreground="#61443D"/>
 
-        <Label Content="Название организации:" FontWeight="SemiBold"/>
+        <Label Content="Название организации:" 
+               FontFamily="Circe Bold"              
+               Foreground="#61443D"/>
         <TextBox x:Name="TxtOrgName" Margin="0,0,0,10" Padding="5"/>
 
-        <Label Content="ИНН/УНП:" FontWeight="SemiBold"/>
+        <Label Content="УНП:" FontWeight="SemiBold"
+               FontFamily="Circe Bold" 
+               Foreground="#61443D"/>
         <TextBox x:Name="TxtINN" Margin="0,0,0,10" Padding="5"/>
 
-        <Label Content="Номер договора:" FontWeight="SemiBold"/>
+        <Label Content="Номер договора:" FontWeight="SemiBold"
+               FontFamily="Circe Bold"
+               Foreground="#61443D"/>
         <TextBox x:Name="TxtContractNumber" Margin="0,0,0,10" Padding="5"/>
 
         <Grid Margin="0,0,0,10">
@@ -31,25 +37,40 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0" Margin="0,0,5,0">
-                <Label Content="Начало аренды:" FontWeight="SemiBold"/>
-                <DatePicker x:Name="DpStartDate" Padding="5"/>
+                <Label Content="Начало аренды:" FontWeight="SemiBold"
+                       FontFamily="Circe Bold"
+                       Foreground="#61443D"/>
+                <DatePicker x:Name="DpStartDate" Padding="5"
+                            FontFamily="Circe"
+                            Foreground="#61443D"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Margin="5,0,0,0">
-                <Label Content="Конец аренды:" FontWeight="SemiBold"/>
-                <DatePicker x:Name="DpEndDate" Padding="5"/>
+                <Label Content="Конец аренды:" FontWeight="SemiBold"
+                       FontFamily="Circe Bold"
+                       Foreground="#61443D"/>
+                <DatePicker x:Name="DpEndDate" Padding="5"
+                            FontFamily="Circe"
+                            Foreground="#61443D"/>
             </StackPanel>
         </Grid>
 
-        <Label Content="Ежемесячная сумма (BYN):" FontWeight="SemiBold"/>
+        <Label Content="Ежемесячная сумма (BYN):" FontWeight="SemiBold"
+               FontFamily="Circe Bold"
+               Foreground="#61443D"/>
         <TextBox x:Name="TxtRentalAmount" Margin="0,0,0,10" Padding="5"/>
 
         <CheckBox x:Name="ChkIsPaid" Content="Оплачено за текущий период" Margin="0,5,0,20" 
-                      FontWeight="SemiBold" Foreground="#34495E"/>
+                      FontFamily="Circe Bold"
+                      Foreground="#61443D"/>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="Отмена" Width="80" Height="30" Margin="0,0,10,0" Click="CancelButton_Click"/>
-            <Button x:Name="SaveButton" Content="Сохранить" Width="100" Height="30" 
+            <Button Content="Отмена" Width="80" Height="30" Margin="0,0,10,0"
+                    FontFamily="Circe Bold"
+                    Foreground="#61443D"
+                    Click="CancelButton_Click"/>
+            <Button x:Name="SaveButton" Content="Сохранить" Width="100" Height="30"
+                    FontFamily="Circe Bold"              
                         Background="#96695E" Foreground="White" BorderBrush="#96695E"
                         Click="SaveButton_Click"/>
         </StackPanel>

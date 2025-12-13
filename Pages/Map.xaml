@@ -8,35 +8,64 @@
 
       Title="Map">
 
-    <Grid>
-        <Border Background="White" CornerRadius="10" Margin="20"/>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="0,0,0,10">
+            <TextBlock Text="Выбор этажа:" 
+                       VerticalAlignment="Center" 
+                       Margin="0,0,10,0"
+                       FontFamily="Circe Bold"
+                       FontSize="16" 
+                       />
+
+            <Button Content="1 Этаж" Tag="1" Click="FloorButton_Click" Margin="5,0" BorderThickness="1"
+                    FontFamily="Circe" Height="27" Width="64"/>
+            <Button Content="2 Этаж" Tag="2" Click="FloorButton_Click" Margin="5,0"
+                    FontFamily="Circe" Height="27" Width="64"/>
+            <Button Content="3 Этаж" Tag="3" Click="FloorButton_Click" Margin="5,0"
+                    FontFamily="Circe" Height="27" Width="64"/>
+        </StackPanel>
+        <Border Background="#96695E" CornerRadius="10" Margin="20"/>
         <!-- Изображение карты -->
-        <Viewbox Stretch="Uniform" Margin="20">
-            <Grid>
-                <Image Source="/MapImage/1.png" Stretch="Uniform"/>
-                <Canvas>
+        <Viewbox Stretch="Uniform" Grid.Row="1" >
+            <Grid x:Name="MapGrid" Width="1100" Height="600">
+
+                <Image x:Name="MapImage" Source="/MapImage/2.png" Stretch="Uniform"/>
+                <Canvas x:Name="MapCanvas">
                     <!--Золотое яблоко-->
-                    <Path x:Name="ЗЯ"
+                    <Path x:Name="F1_ZY"
                      Data="M433,39 L725,39 L725,126 L433,126 Z"
                      Fill="Transparent"
-                     Tag="Золотое Яблоко"  
+                     Visibility="Visible"
+                     Tag="F1_ZY"  
                        MouseEnter="Rect_MouseEnter"
                        MouseLeave="Rect_MouseLeave"
                        MouseMove="Rect_MouseMove"
                        MouseLeftButtonUp="Place_MouseClick"
-                     Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="432.965" Stretch="Fill" Width="292" Canvas.Top="39.326">
+                     Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="593.83" Stretch="Fill" Width="390" Canvas.Top="53.596" Height="113">
                     </Path>
 
-                    <Path x:Name="Булочки"
+                    <Path x:Name="F1_Bulochki"
                     Data="M433,39 L725,39 L725,126 L433,126 Z"
                     Fill="Transparent"
-                    Tag="Булочки" 
+                    Visibility="Visible"
+                    Tag="F1_Bulochki" 
                     MouseEnter="Rect_MouseEnter"
                     MouseLeave="Rect_MouseLeave"
                     MouseMove="Rect_MouseMove"
                     MouseLeftButtonUp="Place_MouseClick" 
-                    Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top" Height="86" Stretch="Fill" Canvas.Left="594.794" Canvas.Top="175.488" Width="60">
+                    Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Top" Height="116" Stretch="Fill" Canvas.Left="808.199" Canvas.Top="234.515" Width="84">
                     </Path>
+
+                    <Path x:Name="F2_Lime"
+                    Data="M433,39 L725,39 L725,126 L433,126 Z"
+                    Fill="Transparent"
+                    Tag="F2_Lime" Visibility="Collapsed"
+                    MouseEnter="Rect_MouseEnter" MouseLeave="Rect_MouseLeave" MouseMove="Rect_MouseMove" MouseLeftButtonUp="Place_MouseClick"
+                    Cursor="Hand" Height="118" Stretch="Fill" Canvas.Top="75.055" Width="134" Canvas.Left="872.847" HorizontalAlignment="Center" VerticalAlignment="Top" />
                     <!--Выплывающее окно-->
                     <Border x:Name="popUpMenu"
                     Background="White"

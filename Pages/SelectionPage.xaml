@@ -1,0 +1,77 @@
+﻿<Page x:Class="Kurs_ArendOff.SelectionPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      Title="Выбор Объекта"
+      Background="#ECF0F1">
+
+    <Page.Resources>
+        <Style x:Key="SelectionButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="55"/>
+            <Setter Property="Background" Value="#96695E"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontFamily" Value="Circe Bold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="0,8"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#A87768"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#7A5248"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    Width="450" 
+                    Background="White">
+
+            <TextBlock Text="Выберите объект для управления:"
+                       FontSize="24" 
+                       FontFamily="Circe Bold"
+                       Margin="0,0,0,30" 
+                       HorizontalAlignment="Center" 
+                       TextAlignment="Center"
+                       Foreground="#96695E"
+                       TextWrapping="Wrap"/>
+
+            <Button Content="Торговый Центр «ArendLand»" 
+                    Tag="ArendLand_Mall_ID" 
+                    Click="ObjectButton_Click"
+                    Style="{StaticResource SelectionButtonStyle}"/>
+
+            <Button Content="Ночной Клуб «Sound»" 
+                    Tag="Sound_Club_ID" 
+                    Click="ObjectButton_Click"
+                    Style="{StaticResource SelectionButtonStyle}"/>
+
+            <Button Content="Бизнес-Центр «Tower»" 
+                    Tag="Tower_BC_ID" 
+                    Click="ObjectButton_Click"
+                    Style="{StaticResource SelectionButtonStyle}"/>
+
+        </StackPanel>
+    </Grid>
+</Page>

@@ -85,5 +85,14 @@ namespace Kurs_ArendOff
 
             MapWindow.Navigate(new Kurs_ArendOff.Pages.DiaryPage());
         }
+        public void LoadMapForObject(string objectId)
+        {
+            // 1. Создаем новую страницу карты, передавая ей ID объекта
+            var mapPage = new Kurs_ArendOff.Page1(objectId);
+
+            // 2. Выполняем навигацию
+            MapWindow.Navigate(mapPage);
+        }
+
     }
 }

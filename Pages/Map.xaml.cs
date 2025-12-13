@@ -1,10 +1,13 @@
 ﻿using Kurs_ArendOff.Models;
 using Kurs_ArendOff.Pages;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace Kurs_ArendOff
@@ -12,14 +15,68 @@ namespace Kurs_ArendOff
 
     public partial class Page1 : Page
     {
-        // Поле для хранения данных помещения, на которое сейчас наведен курсор
+        private string CurrentFloor { get; set; } = "1";
         private Place CurrentPlaceData { get; set; }
+        private string CurrentObjectId { get; set; }
+        private readonly List<string> AllPlaceIdentifiers = new List<string>
+        {
+            "F1_ZY", 
+            "F1_Bulochki",
+            "F2_Lime",
 
-        public Page1()
+        };
+        private class FloorPlaceData
+        {
+            public string PlaceIdentifier { get; set; }
+            public string PathData { get; set; }
+        }
+        public Page1() : this("Mall_ArendOff") // <-- Используйте ID по умолчанию
+        {
+            // Не нужно добавлять InitializeComponent() сюда, он будет вызван во втором конструкторе
+        }
+        public Page1(string objectId)
         {
             InitializeComponent();
-
+            CurrentObjectId = objectId;
+            LoadFloor(CurrentFloor);
         }
+
+        private void LoadFloor(string floorNumber)
+        {
+            CurrentFloor = floorNumber;
+
+            //Смена изображения карты
+            MapImage.Source = new BitmapImage(new Uri($"/MapImage/{floorNumber}.png", UriKind.Relative));
+
+           
+            foreach (Path shape in MapCanvas.Children.OfType<Path>())//Управление видимостью фигур на Canvas
+            {
+                string placeId = shape.Tag?.ToString();
+                // Находим элемент по имени 
+                if (placeId != null)
+                {
+                    // Проверяем, принадлежит ли фигура этому этажу
+                    if (placeId.Contains($"F{floorNumber}_")) 
+                    {
+                        shape.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        shape.Visibility = Visibility.Collapsed;
+                    }
+                }
+            }
+        }
+        private void FloorButton_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if (button?.Tag != null)
+            {
+                // Tag кнопки содержит номер этажа
+                LoadFloor(button.Tag.ToString());
+            }
+        }
+
         private void PositionPopUpMenu(MouseEventArgs e)
         {
             Point mousePosition = e.GetPosition(this);
@@ -119,8 +176,6 @@ namespace Kurs_ArendOff
             {
                 mainWindow.MapWindow.Navigate(new DiaryPage());
             }
-        }
-
-        
+        }      
     }
 }
