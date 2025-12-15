@@ -55,7 +55,7 @@
                 <Image Source="/Icons/logo1.png" Width="94" Height="80" Margin="-20,0,0,0"/>
 
                 <!-- Кнопка Диаграммы -->
-                <Button Height="40" Background="Transparent" Foreground="White" BorderThickness="0">
+                <Button Height="40" Background="Transparent" Foreground="White" BorderThickness="0" Click="DiagramButton_Click">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <Image Source="Icons/diagram.png" Width="20" Height="20" Margin="10,0,0,0"/>
                         <TextBlock x:Name="txtDiagram" Text="Диаграммы"
@@ -88,7 +88,7 @@
                 </Button>
 
                 <!-- Кнопка Настройки -->
-                <Button Height="40" Background="Transparent" Foreground="White" BorderThickness="0">
+                <Button Height="40" Background="Transparent" Foreground="White" BorderThickness="0" Click="SettingsButton_Click">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <Image Source="Icons/Settings.png" Width="20" Height="20" Margin="10,0,0,0"/>
                         <TextBlock x:Name="txtSettings" Text="Настройки"

@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Media.Animation;
 using System.Windows.Controls;
 using Kurs_ArendOff;
-
+using Kurs_ArendOff.Pages;
 
 namespace Kurs_ArendOff
 {
@@ -74,6 +74,10 @@ namespace Kurs_ArendOff
             };
             textBlock.BeginAnimation(OpacityProperty, animation);
         }
+        private void DiagramButton_Click(object sender, RoutedEventArgs e)
+        {
+            MapWindow.Navigate(new Kurs_ArendOff.Pages.DiagramPage());
+        }
 
         private void PlaceButton_Click(object sender, RoutedEventArgs e)
         {
@@ -85,6 +89,12 @@ namespace Kurs_ArendOff
 
             MapWindow.Navigate(new Kurs_ArendOff.Pages.DiaryPage());
         }
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            MapWindow.Navigate(new Kurs_ArendOff.Pages.SettingsPage());
+        }
+
         public void LoadMapForObject(string objectId)
         {
             // 1. Создаем новую страницу карты, передавая ей ID объекта

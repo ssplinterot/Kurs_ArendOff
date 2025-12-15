@@ -126,6 +126,15 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\202512101942208_InitialCreate.cs" />
+    <Compile Include="Migrations\202512101942208_InitialCreate.Designer.cs">
+      <DependentUpon>202512101942208_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202512141022148_AddIsPinnedToOrganizationData.cs" />
+    <Compile Include="Migrations\202512141022148_AddIsPinnedToOrganizationData.Designer.cs">
+      <DependentUpon>202512141022148_AddIsPinnedToOrganizationData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\OrganizationData.cs" />
     <Compile Include="Models\Place.cs" />
     <Compile Include="Models\User.cs" />
@@ -157,6 +166,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202512101942208_InitialCreate.resx">
+      <DependentUpon>202512101942208_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202512141022148_AddIsPinnedToOrganizationData.resx">
+      <DependentUpon>202512141022148_AddIsPinnedToOrganizationData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -1,14 +1,100 @@
 ﻿<Page x:Class="Kurs_ArendOff.Pages.DiagramPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Kurs_ArendOff.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="DiagramPage">
+      Title="DiagramPage"
+      Background="#ECF0F1"
+      Loaded="Page_Loaded"
+      KeepAlive="False">
 
-    <Grid>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Обзор закрепленного договора"
+                   FontSize="24"
+                   FontFamily="Circe Extra Bold"
+                   Margin="0,0,0,15"/>
+
+        <Border x:Name="PlaceholderPanel" Grid.Row="1" 
+                VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Закрепите договор в Дневнике, чтобы отслеживать его статус."
+                       FontFamily="Circe" FontSize="18" Foreground="#666666" 
+                       TextWrapping="Wrap" TextAlignment="Center"
+                       Margin="50"/>
+        </Border>
         
+
+        <StackPanel x:Name="DiagramContentPanel" Grid.Row="1" Visibility="Collapsed"
+                    Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <TextBlock x:Name="ContractTitle" 
+                       FontFamily="Circe Bold" FontSize="22" Margin="0,0,0,20" 
+                       Foreground="#96695E"/>
+
+            <Grid Width="300" Height="300" Margin="0,15,0,20">
+
+                <Ellipse Stroke="#DDDDDD" 
+             StrokeThickness="20" 
+             HorizontalAlignment="Stretch" 
+             VerticalAlignment="Stretch"/>
+
+                <Path x:Name="ProgressPath"
+          Stroke="#CCCCCC" 
+          StrokeThickness="20"
+          StrokeStartLineCap="Round"
+          StrokeEndLineCap="Round"
+          HorizontalAlignment="Stretch"
+          VerticalAlignment="Stretch">
+
+                    <Path.Data>
+                        <PathGeometry>
+                            <PathFigure StartPoint="150, 10">
+                                <ArcSegment Size="140, 140" 
+                                IsLargeArc="True" 
+                                SweepDirection="Clockwise" 
+                                Point="149.99, 10"/>
+                            </PathFigure>
+                        </PathGeometry>
+                    </Path.Data>
+                </Path>
+
+                <TextBlock x:Name="DaysRemainingText" 
+               Text="*** Дней" 
+               FontFamily="Circe"
+               VerticalAlignment="Center" 
+               HorizontalAlignment="Center" 
+               FontSize="45" />
+            </Grid>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,5" >
+
+                <TextBlock Text="Окончание: " FontFamily="Circe"/>
+
+                <TextBlock x:Name="EndDateText" FontFamily="Circe"/>
+
+            </StackPanel>
+
+
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+
+                <TextBlock Text="Арендатор: " FontFamily="Circe"/>
+
+                <TextBlock x:Name="TenantNameText" FontFamily="Circe"/>
+
+            </StackPanel>
+
+
+
+            <StackPanel Orientation="Horizontal">
+
+                <TextBlock Text="Сумма аренды: " FontFamily="Circe"/>
+
+                <TextBlock x:Name="AmountText" FontFamily="Circe"/>
+
+            </StackPanel>
+
+        </StackPanel>
     </Grid>
 </Page>

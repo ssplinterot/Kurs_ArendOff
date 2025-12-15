@@ -1,14 +1,86 @@
 ﻿<Page x:Class="Kurs_ArendOff.Pages.SettingsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Kurs_ArendOff.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="SettingsPage">
+      Title="SettingsPage"
+      Background="#ECF0F1">
 
-    <Grid>
-        
-    </Grid>
+    <Page.Resources>
+        <Style x:Key="CardBorder" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="15"/>
+            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#CCCCCC" Direction="270" ShadowDepth="1" BlurRadius="5" Opacity="0.5"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="PART_Border"  
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#A9877D" TargetName="PART_Border"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#80594D" TargetName="PART_Border"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <StackPanel Margin="30">
+        <TextBlock Text="Настройки"
+                   FontSize="28"
+                   FontFamily="Circe Extra Bold"
+                   Margin="0,0,0,25"
+                   Foreground="#333333"/>
+
+        <Border Style="{StaticResource CardBorder}">
+            <StackPanel>
+                <TextBlock Text="Выбор здания"
+                           FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                <StackPanel x:Name="BuildingSelectionPanel">
+
+                    <RadioButton Content="ТЦ &quot;Галерея&quot;" GroupName="Building" 
+                 Margin="0,5" Tag="1" Checked="BuildingRadioButton_Checked"/>
+
+                    <RadioButton Content="ТРЦ &quot;Palazzo&quot;" GroupName="Building" 
+                 Margin="0,5" Tag="2" Checked="BuildingRadioButton_Checked"/>
+
+                    <RadioButton Content="ТРЦ &quot;Титан&quot;" GroupName="Building" 
+                 Margin="0,5" Tag="3" Checked="BuildingRadioButton_Checked"/>
+
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <Border Style="{StaticResource CardBorder}" Margin="0,20,0,0">
+            <StackPanel>
+                <TextBlock Text="Аккаунт"
+                           FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                <Button Content="Выйти из профиля / Сменить пользователя"
+                        Click="LogoutButton_Click"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Background="#96695E"/>
+            </StackPanel>
+        </Border>
+    </StackPanel>
 </Page>

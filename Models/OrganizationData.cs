@@ -28,6 +28,7 @@ namespace Kurs_ArendOff.Models
         // Платежи и суммы
         public decimal RentalAmount { get; set; } // Ежемесячная сумма аренды
         public bool IsPaid { get; set; } // Флаг, оплачена ли аренда за текущий период
+        public bool IsPinned { get; set; }
     }
 }
 
